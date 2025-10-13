@@ -1,4 +1,40 @@
+import { useState } from 'react';
 import Icon from '@/components/ui/icon';
+
+const modalData = [
+  {
+    id: 1,
+    title: 'Лучший тиммейт —\nHey, Store!',
+    description: 'Пополняйте игры и сервисы за пару кликов',
+    image: 'https://cdn.poehali.dev/files/c88c65d9-f041-4316-9096-a917f4d82c68.png',
+    buttonText: 'ПОДРОБНЕЕ',
+    bgColor: 'bg-gradient-to-b from-slate-400/30 to-slate-600/20',
+  },
+  {
+    id: 2,
+    title: 'ChatGPT\nпо выгодным ценам',
+    description: 'Выбирай любой из двух тарифов на месяц — Plus или Pro',
+    image: 'https://cdn.poehali.dev/files/29cdfb46-e1bd-4000-aa59-81069292b460.png',
+    buttonText: 'КУПИТЬ CHATGPT',
+    bgColor: 'bg-gradient-to-b from-green-500/30 to-green-700/20',
+  },
+  {
+    id: 3,
+    title: 'Овладейте магией\nгенераций с Krea',
+    description: 'Нейросеть, раздвигающая границы творчества',
+    image: 'https://api.freelogodesign.org/assets/blog/thumb/4ddcba00db4142899d322683c681601a_1176x840.jpg?t=638369603760000000',
+    buttonText: 'КУПИТЬ KREA',
+    bgColor: 'bg-gradient-to-b from-gray-700/40 to-black/30',
+  },
+  {
+    id: 4,
+    title: 'eSIM для\nрегистрации',
+    description: 'Виртуальные номера для активации сервисов',
+    image: 'https://www.iotinsider.com/wp-content/uploads/2024/02/esim-1.jpg',
+    buttonText: 'КУПИТЬ ESIM',
+    bgColor: 'bg-gradient-to-b from-blue-500/30 to-blue-700/20',
+  },
+];
 
 const featuredProducts = [
   {
@@ -34,6 +70,27 @@ const categories = [
 ];
 
 const Index = () => {
+  const [selectedModal, setSelectedModal] = useState<number | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const openModal = (id: number) => {
+    const index = modalData.findIndex(item => item.id === id);
+    setCurrentSlide(index);
+    setSelectedModal(id);
+  };
+
+  const closeModal = () => {
+    setSelectedModal(null);
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % modalData.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + modalData.length) % modalData.length);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#020818] via-[#0a0f1e] to-[#0f1629]">
       <header className="border-b border-white/5 backdrop-blur-sm sticky top-0 z-50 bg-[#020818]/95">
@@ -67,6 +124,7 @@ const Index = () => {
             {featuredProducts.map((product) => (
               <div
                 key={product.id}
+                onClick={() => openModal(product.id)}
                 className="group relative overflow-hidden rounded-[28px] cursor-pointer"
               >
                 <div className="relative h-64 overflow-hidden rounded-[28px]">
@@ -106,6 +164,73 @@ const Index = () => {
           </div>
         </section>
       </main>
+
+      {selectedModal && (
+        <div 
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4"
+          onClick={closeModal}
+        >
+          <div className="relative w-full max-w-md" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={prevSlide}
+              className="absolute left-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors z-10"
+            >
+              <Icon name="ChevronLeft" size={28} className="text-white" />
+            </button>
+
+            <div className={`relative rounded-[32px] overflow-hidden ${modalData[currentSlide].bgColor} backdrop-blur-xl`}>
+              <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+                <div className="flex gap-1">
+                  {modalData.map((_, idx) => (
+                    <div
+                      key={idx}
+                      className={`h-1 rounded-full transition-all ${
+                        idx === currentSlide ? 'w-12 bg-white' : 'w-8 bg-white/40'
+                      }`}
+                    />
+                  ))}
+                </div>
+                <button
+                  onClick={closeModal}
+                  className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
+                >
+                  <Icon name="X" size={20} className="text-white" />
+                </button>
+              </div>
+
+              <div className="relative pt-16 px-6 pb-6">
+                <div className="mb-6">
+                  <h2 className="text-3xl font-bold text-white mb-3 leading-tight whitespace-pre-line">
+                    {modalData[currentSlide].title}
+                  </h2>
+                  <p className="text-white/90 text-base">
+                    {modalData[currentSlide].description}
+                  </p>
+                </div>
+
+                <div className="relative h-[400px] mb-6 rounded-3xl overflow-hidden">
+                  <img
+                    src={modalData[currentSlide].image}
+                    alt={modalData[currentSlide].title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <button className="w-full py-4 bg-white hover:bg-white/90 text-black font-bold text-sm rounded-2xl transition-colors">
+                  {modalData[currentSlide].buttonText}
+                </button>
+              </div>
+            </div>
+
+            <button
+              onClick={nextSlide}
+              className="absolute right-[-60px] top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors z-10"
+            >
+              <Icon name="ChevronRight" size={28} className="text-white" />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
