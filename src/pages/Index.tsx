@@ -18,7 +18,7 @@ const featuredProducts = [
   },
   {
     id: 4,
-    title: 'eSIM для\nпутешествий',
+    title: 'eSIM для\nрегистрации',
     image: 'https://www.iotinsider.com/wp-content/uploads/2024/02/esim-1.jpg',
   },
 ];
@@ -54,8 +54,8 @@ const Index = () => {
       </header>
 
       <main className="container mx-auto px-6">
-        <section className="py-16">
-          <div className="text-center mb-16 space-y-4">
+        <section className="py-12">
+          <div className="text-center mb-12 space-y-4">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.15] tracking-tight">
               Оплачивайте зарубежные
               <br />
@@ -63,7 +63,7 @@ const Index = () => {
             </h1>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-7xl mx-auto mb-12">
             {featuredProducts.map((product) => (
               <div
                 key={product.id}
@@ -84,7 +84,7 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="flex items-center gap-4 overflow-x-auto pb-4 scrollbar-hide max-w-7xl mx-auto mb-12">
+          <div className="flex items-center gap-4 overflow-x-auto pb-4 scrollbar-hide max-w-7xl mx-auto mb-10">
             {categories.map((cat, idx) => (
               <button
                 key={idx}
