@@ -4,12 +4,12 @@ const featuredProducts = [
   {
     id: 1,
     title: 'Оплачивайте\nSteam и игры',
-    image: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&h=600&fit=crop',
+    image: 'https://cdn.poehali.dev/projects/4bcf8f3d-ee8d-4840-bc82-5134ef177026/files/5e988bd1-126b-4c65-b934-3ca848b1d938.jpg',
   },
   {
     id: 2,
     title: 'Покупайте\nChatGPT',
-    image: 'https://cdn.poehali.dev/files/554c5a4e-3a8b-4446-8637-23db05c786ec.png',
+    image: 'https://cdn.poehali.dev/projects/4bcf8f3d-ee8d-4840-bc82-5134ef177026/files/e8b7ae72-372b-4f4e-95cf-55b9d5f1dd7e.jpg',
   },
   {
     id: 3,
