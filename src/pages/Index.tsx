@@ -4,12 +4,12 @@ const featuredProducts = [
   {
     id: 1,
     title: 'Оплачивайте\nSteam и игры',
-    image: 'https://payment.mts.ru/tools/_next/image?url=%2Ftools%2F_next%2Fstatic%2Fmedia%2Fgames.469da641.jpg&w=640&q=75',
+    image: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&h=600&fit=crop',
   },
   {
     id: 2,
     title: 'Покупайте\nChatGPT',
-    image: 'https://payment.mts.ru/tools/_next/image?url=%2Ftools%2F_next%2Fstatic%2Fmedia%2Fgpt.6f8a1f1f.jpg&w=640&q=75',
+    image: 'https://cdn.poehali.dev/files/554c5a4e-3a8b-4446-8637-23db05c786ec.png',
   },
   {
     id: 3,
@@ -40,10 +40,10 @@ const Index = () => {
         <div className="container mx-auto px-6 py-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 bg-red-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-base">МТС</span>
+              <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-red-700 rounded-xl flex items-center justify-center shadow-lg shadow-red-600/30">
+                <span className="text-white font-bold text-xl">H</span>
               </div>
-              <span className="text-2xl font-bold tracking-tight">ОПЛАТА</span>
+              <span className="text-2xl font-bold tracking-tight">Hey, Store!</span>
             </div>
             
             <button className="p-2.5 hover:bg-white/5 rounded-xl transition-colors">
