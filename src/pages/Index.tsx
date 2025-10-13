@@ -20,11 +20,11 @@ const modalData = [
   },
   {
     id: 3,
-    title: 'Овладейте магией\nгенераций с Krea',
-    description: 'Нейросеть, раздвигающая границы творчества',
+    title: 'Медиасервисы\nпо выгодным ценам',
+    description: 'Spotify, YouTube Premium, Apple Music и другие сервисы',
     image: 'https://api.freelogodesign.org/assets/blog/thumb/4ddcba00db4142899d322683c681601a_1176x840.jpg?t=638369603760000000',
-    buttonText: 'КУПИТЬ KREA',
-    bgColor: 'bg-gradient-to-b from-gray-700/40 to-black/30',
+    buttonText: 'КУПИТЬ ПОДПИСКУ',
+    bgColor: 'bg-gradient-to-b from-green-600/40 to-green-800/30',
   },
   {
     id: 4,
@@ -178,47 +178,49 @@ const Index = () => {
               <Icon name="ChevronLeft" size={28} className="text-white" />
             </button>
 
-            <div className={`relative rounded-[32px] overflow-hidden ${modalData[currentSlide].bgColor} backdrop-blur-xl`}>
-              <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-                <div className="flex gap-1">
-                  {modalData.map((_, idx) => (
-                    <div
-                      key={idx}
-                      className={`h-1 rounded-full transition-all ${
-                        idx === currentSlide ? 'w-12 bg-white' : 'w-8 bg-white/40'
-                      }`}
-                    />
-                  ))}
-                </div>
-                <button
-                  onClick={closeModal}
-                  className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
-                >
-                  <Icon name="X" size={20} className="text-white" />
-                </button>
+            <div className="relative rounded-[32px] overflow-hidden backdrop-blur-xl">
+              <div className="absolute inset-0 z-0">
+                <img
+                  src={modalData[currentSlide].image}
+                  alt={modalData[currentSlide].title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
               </div>
 
-              <div className="relative pt-16 px-6 pb-6">
-                <div className="mb-6">
-                  <h2 className="text-3xl font-bold text-white mb-3 leading-tight whitespace-pre-line">
-                    {modalData[currentSlide].title}
-                  </h2>
-                  <p className="text-white/90 text-base">
-                    {modalData[currentSlide].description}
-                  </p>
+              <div className="relative z-10">
+                <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                  <div className="flex gap-1">
+                    {modalData.map((_, idx) => (
+                      <div
+                        key={idx}
+                        className={`h-1 rounded-full transition-all ${
+                          idx === currentSlide ? 'w-12 bg-white' : 'w-8 bg-white/40'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <button
+                    onClick={closeModal}
+                    className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
+                  >
+                    <Icon name="X" size={20} className="text-white" />
+                  </button>
                 </div>
 
-                <div className="relative h-[400px] mb-6 rounded-3xl overflow-hidden">
-                  <img
-                    src={modalData[currentSlide].image}
-                    alt={modalData[currentSlide].title}
-                    className="w-full h-full object-cover"
-                  />
+                <div className="relative pt-16 px-6 pb-6 min-h-[600px] flex flex-col justify-between">
+                  <div className="mt-auto">
+                    <h2 className="text-3xl font-bold text-white mb-3 leading-tight whitespace-pre-line">
+                      {modalData[currentSlide].title}
+                    </h2>
+                    <p className="text-white/90 text-base mb-6">
+                      {modalData[currentSlide].description}
+                    </p>
+                    <button className="w-full py-4 bg-white hover:bg-white/90 text-black font-bold text-sm rounded-2xl transition-colors">
+                      {modalData[currentSlide].buttonText}
+                    </button>
+                  </div>
                 </div>
-
-                <button className="w-full py-4 bg-white hover:bg-white/90 text-black font-bold text-sm rounded-2xl transition-colors">
-                  {modalData[currentSlide].buttonText}
-                </button>
               </div>
             </div>
 
