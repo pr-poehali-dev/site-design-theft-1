@@ -114,9 +114,7 @@ const Index = () => {
         <section className="py-12">
           <div className="text-center mb-12 space-y-4">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.15] tracking-tight">
-              Оплачивайте зарубежные
-              <br />
-              сервисы <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-purple-600">рублями</span>
+              Весь цифровой мир — <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-purple-600">за рубли</span>
             </h1>
           </div>
 
